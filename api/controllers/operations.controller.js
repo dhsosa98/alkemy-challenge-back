@@ -36,6 +36,7 @@ const deleteOperation = async (req, res) => {
 
 const updateOperation = async (req, res) => {
 	const data = req.body; 
+	if (!data["date"]){ data["date"] = null}
 	const operationUpdated = await operationRepository.updateOperation(data); 
 	return res.send({
 		data: operationUpdated
@@ -44,8 +45,15 @@ const updateOperation = async (req, res) => {
 
 const getByUserID = async (req, res) => {
 	const { id } = req.session.user; 
-	const toWhere = { UserId: id };
-	const operations = await operationRepository.getAllByField(toWhere); 
+	let {page, size} = req.query
+	let limit = parseInt(size) || 10
+	const offset = parseInt(page)*size || 0
+	let toWhere = { UserId: id };
+	let options = {where: toWhere}
+	if (offset){options = {...options, offset: offset}}
+	if (limit){options = {...options, limit: limit}}
+	console.log(options)
+	const operations = await operationRepository.getAllByFieldAndPagination(options); 
 	return res.send({
 		data: operations
 	});

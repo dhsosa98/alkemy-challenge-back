@@ -62,6 +62,16 @@ const getByField = async (entity, toWhere) => {
 	}
 };
 
+const getAllByFieldAndPagination = async (entity, options) => {
+	try{
+		const result = await db[entity].findAndCountAll(options); 
+		return result; 
+	}catch(error){
+		console.log(error); 
+		return; 
+	}
+};
+
 const getAllByField = async (entity, toWhere) => {
 	try{
 		const result = await db[entity].findAll({ where: toWhere }); 
@@ -79,7 +89,8 @@ const baseRepository = {
 	destroy,
 	update,
 	getByField, 
-	getAllByField
+	getAllByField,
+	getAllByFieldAndPagination
 };
 
 module.exports = baseRepository; 

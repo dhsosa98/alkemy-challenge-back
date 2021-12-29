@@ -8,7 +8,7 @@ operationRouter.get('/userOperations', verifyJWT, operationsController.getByUser
 operationRouter.get('/:id', verifyJWT, operationsController.get); 
 operationRouter.post('/', verifyJWT, operationsController.createOperation); 
 operationRouter.delete('/:id', verifyJWT, operationsController.deleteOperation); 
-operationRouter.patch('/', verifyJWT,operationsController.updateOperation); 
+operationRouter.patch('/', verifyJWT, operationsController.updateOperation); 
 
 
 module.exports = operationRouter; 
