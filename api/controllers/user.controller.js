@@ -119,8 +119,49 @@ const login = async (req, res) => {
 	});
 };
 
+const resetPassword = async (req, res) =>{
+	const { username, password } = req.body; 
+	if (!req.session.user){
+		const toWhere = {
+			username: username
+		};
+		const user = { username, password };
+		let userDB =  await userRepository.getByField(toWhere); 
+	if (userDB){
+		try{
+		const passwordCompare = await bcrypt.compare(password, userDB.password);
+		if (passwordCompare){
+			res.send({
+				data:
+					{
+						errors: "The password is the same"
+					}
+			})
+		}
+		else{
+		userDB['password'] = await bcrypt.hash(password, parseInt(process.env.SALT_HASH))
+		console.log(userDB.dataValues)
+		const userUpdated = await userRepository.updateUser(userDB.dataValues)
+		res.send({
+			data: userUpdated
+		})
+		}}
+		catch{}
+	}
+	else {
+		res.send({
+			data:
+				{
+					errors: "The username not exist"
+				}
+		})
+	}
+	}
+}
+
 const userController = {
 	createUser, 
+	resetPassword,
 	getAll,
 	get,
 	login,

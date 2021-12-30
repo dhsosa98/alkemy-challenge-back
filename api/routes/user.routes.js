@@ -13,6 +13,7 @@ router.get('/', verifyJWT, userController.getAll);
 router.post('/login', userController.login); 
 router.get('/:id', verifyJWT, userController.get); 
 router.post('/register', userController.createUser); 
+router.put('/reset-password', userController.resetPassword); 
 router.delete('/:id', verifyJWT, userController.deleteUser);
 router.patch('/', verifyJWT, userController.updateUser); 
 
