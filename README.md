@@ -1,6 +1,6 @@
 # Getting Started
 
-This project was created with [Express](https://github.com/expressjs/express), [Sequelize](https://github.com/sequelize/sequelize),[JsonWebToken](https://github.com/auth0/node-jsonwebtoken) and for DB I used MYSQL
+This project was created with [Express](https://github.com/expressjs/express), [Sequelize](https://github.com/sequelize/sequelize), [JsonWebToken](https://github.com/auth0/node-jsonwebtoken) and for database MYSQL
 
 ## Available Scripts
 
