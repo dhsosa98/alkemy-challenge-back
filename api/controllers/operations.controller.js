@@ -46,7 +46,7 @@ const updateOperation = async (req, res) => {
 	});
 };
 
-const getByUserID = async (req, res) => {
+const getByUserIDandQueries = async (req, res) => {
 	const { id } = req.session.user; 
 	let {page, size, sort, search, from, to} = req.query
 	let sortOpt = []
@@ -88,7 +88,7 @@ const getByUserID = async (req, res) => {
 	options = {...options, limit: limit}
 	console.log(options)
 	const total = await getTotal(id)
-	const operations = await operationRepository.getAllByFieldAndPagination(options) || []; 
+	const operations = await operationRepository.getAllByFieldAndOptions(options) || []; 
 	operations["total"] = total || 0
 	return res.send({
 		data: {operations: operations}
@@ -101,7 +101,7 @@ const operationController = {
 	get,
 	deleteOperation,
 	updateOperation,
-	getByUserID
+	getByUserIDandQueries
 };
 
 module.exports = operationController; 

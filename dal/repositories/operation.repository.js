@@ -27,8 +27,8 @@ const updateOperation = async (data) => {
 	return operationUpdated; 
 };
 
-const getAllByFieldAndPagination = async (options) => {
-	const operations = await baseRepository.getAllByFieldAndPagination(entity, options);
+const getAllByFieldAndOptions = async (options) => {
+	const operations = await baseRepository.getAllByFieldAndOptions(entity, options);
 	return operations; 
 };
 
@@ -44,7 +44,7 @@ const operationRepository = {
 	deleteOperation,
 	updateOperation,
 	getAllByField,
-	getAllByFieldAndPagination
+	getAllByFieldAndOptions
 };
 
 module.exports = operationRepository; 

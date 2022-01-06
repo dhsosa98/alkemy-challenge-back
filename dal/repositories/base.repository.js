@@ -62,7 +62,7 @@ const getByField = async (entity, toWhere) => {
 	}
 };
 
-const getAllByFieldAndPagination = async (entity, options) => {
+const getAllByFieldAndOptions = async (entity, options) => {
 	try{
 		const result = await db[entity].findAndCountAll(options); 
 		return result; 
@@ -90,7 +90,7 @@ const baseRepository = {
 	update,
 	getByField, 
 	getAllByField,
-	getAllByFieldAndPagination
+	getAllByFieldAndOptions
 };
 
 module.exports = baseRepository; 
