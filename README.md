@@ -9,12 +9,12 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the production mode.\
-is opened in [http://localhost:4000]
+is opened in [http://localhost:4000](http://localhost:4000)
 
 ### `npm run dev`
 
 Runs the app in the development mode.\
-is opened in [http://localhost:4000]
+is opened in [http://localhost:4000](http://localhost:4000)
 and you can use morgan for log HTTP request
 and errors.
 
