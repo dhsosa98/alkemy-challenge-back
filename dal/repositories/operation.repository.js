@@ -1,6 +1,6 @@
 const baseRepository = require('./base.repository'); 
 
-const entity = 'Operation'; 
+const entity = 'operations'; 
 
 const getOperations = async () => {
 	const operations = await baseRepository.getAll(entity); 

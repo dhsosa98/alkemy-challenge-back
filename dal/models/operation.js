@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 
     
 		static associate(models) {
-			Operation.belongsTo(models.User); 
+			Operation.belongsTo(models.users); 
 		}
 	}
 	Operation.init({
@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
 		type: DataTypes.STRING
 	}, {
 		sequelize,
-		modelName: 'Operation',
+		modelName: 'operations',
 		timestamps: false
 	});
 	return Operation;

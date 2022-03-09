@@ -1,5 +1,5 @@
 const baseRepository = require('./base.repository'); 
-const entity = 'User'; 
+const entity = 'users'; 
 
 const getAll = async () => {
 	const users = await baseRepository.getAll(entity); 
