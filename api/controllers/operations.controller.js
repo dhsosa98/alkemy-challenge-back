@@ -64,7 +64,7 @@ const getByUserIDandQueries = async (req, res) => {
   const options = { order, limit, offset, where: { UserId: id, ...toWhere } };
   const operations =
     (await operationRepository.getAllByFieldAndOptions(options)) || [];
-  const total = await calculateTotal(operations?.rows);
+  const total = await calculateTotal(id);
   operations["total"] = total || 0;
   return res.send({
     data: { operations: operations },
