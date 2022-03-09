@@ -7,7 +7,9 @@ module.exports = (sequelize, DataTypes) => {
 
     
 		static associate(models) {
-			Operation.belongsTo(models.users); 
+			Operation.belongsTo(models.users, {
+				foreignKey: 'UserId'
+			  }); 
 		}
 	}
 	Operation.init({
