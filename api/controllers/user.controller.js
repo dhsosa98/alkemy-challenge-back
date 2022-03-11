@@ -55,6 +55,35 @@ const get = async (req, res) => {
 	});  
 };
 
+const getMe = async (req, res) => {
+	const { id } = req.session.user;
+	const user = await userRepository.get(id); 
+	
+	return res.send({
+		data: user
+	});  
+};
+
+const deleteMe = async (req, res) => {
+	const { id } = req.session.user;
+	const user = await userRepository.deleteUser(id); 
+	
+	return res.send({
+		data: user
+	});  
+};
+
+const updateMe = async (req, res) => {
+	const data = req.body;
+	data.id = req.session.user.id
+	const user = await userRepository.updateUser(data); 
+	if (user){
+		return res.send({
+			data: user
+		}); 
+	}
+};
+
 const deleteUser = async (req, res) => {
 	const { id } = req.params; 
 	const userDeleted = await userRepository.deleteUser(id);
@@ -164,6 +193,9 @@ const userController = {
 	resetPassword,
 	getAll,
 	get,
+	getMe,
+	deleteMe,
+	updateMe,
 	login,
 	deleteUser,
 	updateUser,

@@ -11,6 +11,9 @@ const { userController } = require('../controllers');
 
 router.get('/', verifyJWT, userController.getAll);
 router.post('/login', userController.login); 
+router.get('/me', verifyJWT, userController.getMe);
+router.delete('/me', verifyJWT, userController.deleteMe);
+router.patch('/me', verifyJWT, userController.updateMe);
 router.get('/:id', verifyJWT, userController.get); 
 router.post('/register', userController.createUser); 
 router.put('/reset-password', userController.resetPassword); 
