@@ -11,6 +11,7 @@ const { userController } = require('../controllers');
 
 router.get('/', verifyJWT, userController.getAll);
 router.post('/login', userController.login); 
+router.post('/googleAuth', userController.googleAuth); 
 router.get('/me', verifyJWT, userController.getMe);
 router.delete('/me', verifyJWT, userController.deleteMe);
 router.patch('/me', verifyJWT, userController.updateMe);
