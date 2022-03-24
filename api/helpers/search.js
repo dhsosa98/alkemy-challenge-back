@@ -1,7 +1,7 @@
 const { Op } = require("sequelize");
 const Sequelize = require("sequelize");
 
-const createSearch = (search, from, to) => {
+const createSearch = (search) => {
   let toWhere = {};
   if (search) {
     if (!!search.trim()) {
@@ -33,19 +33,8 @@ const createSearch = (search, from, to) => {
       };
     }
   }
-  if (from) {
-    if (!to) {
-      toWhere = {
-        ...toWhere,
-        [Op.and]: [{ date: { [Op.between]: [from, Sequelize.fn("NOW")] } }],
-      };
-    } else {
-      toWhere = {
-        ...toWhere,
-        [Op.and]: [{ date: { [Op.between]: [from, to] } }],
-      };
-    }
-  }
+    
+    console.log(toWhere)
   return { toWhere };
 };
 
