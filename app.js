@@ -5,7 +5,7 @@ const logger = require('morgan');
 const session = require('express-session'); 
 const cors = require('cors'); 
 
-const { userRouter, operationsRouter } =require('./api/routes');
+const { userRouter, operationsRouter, filesRouter } =require('./api/routes');
 
 const App = express();
 
@@ -29,5 +29,6 @@ App.use(cors())
 .use(session(sess))
 .use('/api/users', userRouter)
 .use('/api/operations', operationsRouter)
+.use('/api/files', filesRouter)
 
 module.exports = App;
