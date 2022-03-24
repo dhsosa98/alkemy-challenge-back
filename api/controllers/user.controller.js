@@ -105,11 +105,16 @@ const test = (req, res) => {
 };
 
 const updateUser = async (req, res) => {
+  try{
   const data = req.body;
   const userUpdated = await userRepository.updateUser(data);
   return res.send({
     data: userUpdated,
   });
+  }
+  catch(err){
+    next(err)
+  }
 };
 
 const login = async (req, res) => {
@@ -160,7 +165,6 @@ const resetPassword = async (req, res) => {
     const toWhere = {
       username: username,
     };
-    const user = { username, password };
     let userDB = await userRepository.getByField(toWhere);
     if (userDB) {
       try {
@@ -176,7 +180,6 @@ const resetPassword = async (req, res) => {
             password,
             parseInt(process.env.SALT_HASH)
           );
-          console.log(userDB.dataValues);
           const userUpdated = await userRepository.updateUser(
             userDB.dataValues
           );
