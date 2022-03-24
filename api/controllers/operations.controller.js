@@ -3,6 +3,8 @@ const { calculateTotal } = require("../helpers/calculateTotal");
 const { createPagination } = require("../helpers/pagination");
 const { createSort } = require("../helpers/sort");
 const { createSearch } = require("../helpers/search");
+const { createFilter } = require("../helpers/filter");
+const { filterBy, createFilterBy } = require("../helpers/filterBy");
 
 const getAll = async (req, res) => {
   const operations = await operationRepository.getOperations();
@@ -57,10 +59,12 @@ const updateOperation = async (req, res) => {
 
 const getByUserIDandQueries = async (req, res) => {
   const { id } = req.session.user;
-  let { page, size, sort, search, from, to } = req.query;
+  let { page, size, sort, search, from, to, filterBy } = req.query;
   const { limit, offset } = createPagination(page, size);
   const { order } = createSort(sort);
-  const { toWhere } = createSearch(search, from, to);
+  const { fields } = createFilterBy(filterBy)
+  const { filter } = createFilter(search, from, to, fields)
+  let toWhere = {...filter}
   const options = { order, limit, offset, where: { UserId: id, ...toWhere } };
   const operations =
     (await operationRepository.getAllByFieldAndOptions(options)) || [];
