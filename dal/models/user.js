@@ -1,9 +1,10 @@
 'use strict';
-const {Model} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+import { Model, DataTypes } from 'sequelize';
+
+const UserModel = (sequelize) => {
 	class User extends Model {
-	
 	}
+
 	User.init({
 		username: {type: DataTypes.STRING, unique: true},
 		password: DataTypes.STRING,
@@ -15,5 +16,8 @@ module.exports = (sequelize, DataTypes) => {
 		modelName: 'users',
 		timestamps: false
 	});
+
 	return User;
 };
+
+export default UserModel;

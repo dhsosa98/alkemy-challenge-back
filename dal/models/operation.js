@@ -1,15 +1,14 @@
+import { Model } from 'sequelize';
 'use strict';
-const {
-	Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+
+const OperationModel = (sequelize, DataTypes) => {
 	class Operation extends Model {
 
     
 		static associate(models) {
 			Operation.belongsTo(models.users, {
 				foreignKey: 'UserId'
-			  }); 
+			}); 
 		}
 	}
 	Operation.init({
@@ -25,3 +24,5 @@ module.exports = (sequelize, DataTypes) => {
 	});
 	return Operation;
 };
+
+export default OperationModel;

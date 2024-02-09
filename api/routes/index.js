@@ -1,5 +1,9 @@
-module.exports = {
-	userRouter: require('./user.routes'), 
-	operationsRouter: require('./operations.routes'),
-	filesRouter: require('./files.routes')
+import userRouter from './user.routes.js';
+import operationsRouter from './operations.routes.js';
+import filesRouter from './files.routes.js';
+
+export {
+	userRouter,
+	operationsRouter,
+	filesRouter
 };

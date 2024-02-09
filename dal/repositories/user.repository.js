@@ -1,4 +1,5 @@
-const baseRepository = require('./base.repository'); 
+import baseRepository from './base.repository.js'; 
+
 const entity = 'users'; 
 
 const getAll = async () => {
@@ -40,4 +41,4 @@ const userRepository = {
 	updateUser
 };
 
-module.exports = userRepository; 
+export default userRepository;

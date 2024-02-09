@@ -1,9 +1,4 @@
-const {
-  uploadFile,
-  updateFile,
-  deleteFile,
-} = require("../services/S3CleverCloud");
-
+import { uploadFile, updateFile, deleteFile } from "../services/S3CleverCloud.js";
 async function handleFiles(req, res, next) {
   try {
     const { file } = req;
@@ -31,4 +26,4 @@ async function handleFiles(req, res, next) {
   }
 }
 
-module.exports = { handleFiles };
+export { handleFiles };

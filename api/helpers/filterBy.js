@@ -7,4 +7,4 @@ const createFilterBy = (filter) => {
     return { fields };
   };
   
-  module.exports = { createFilterBy };
+export { createFilterBy };

@@ -4,4 +4,4 @@ const createPagination = (page, size) => {
   return { limit, offset };
 };
 
-module.exports = { createPagination };
+export { createPagination };

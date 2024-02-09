@@ -1,6 +1,6 @@
 // Load the AWS SDK for Node.js
-const AWS = require("aws-sdk");
-const uuid = require('uuid');
+import AWS from "aws-sdk";
+import { v4 as uuid } from 'uuid';
 
 // Set up config
 const bucketName = "s3-om-files"
@@ -89,10 +89,10 @@ const uploadFile = async (file) => {
     }
   }
   
-  module.exports = {
+export {
     uploadFile,
     downloadFile, 
     searchFiles,
     deleteFile,
     updateFile
-  };
+};

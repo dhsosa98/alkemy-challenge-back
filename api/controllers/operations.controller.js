@@ -1,10 +1,10 @@
-const { operationRepository } = require("../../dal/repositories");
-const { calculateTotal } = require("../helpers/calculateTotal");
-const { createPagination } = require("../helpers/pagination");
-const { createSort } = require("../helpers/sort");
-const { createSearch } = require("../helpers/search");
-const { createFilter } = require("../helpers/filter");
-const { filterBy, createFilterBy } = require("../helpers/filterBy");
+import { operationRepository } from "../../dal/repositories/index.js";
+import { calculateTotal } from "../helpers/calculateTotal.js";
+import { createPagination } from "../helpers/pagination.js";
+import { createSort } from "../helpers/sort.js";
+import { createSearch } from "../helpers/search.js";
+import { createFilter } from "../helpers/filter.js";
+import { createFilterBy } from "../helpers/filterBy.js";
 
 const getAll = async (req, res) => {
   const operations = await operationRepository.getOperations();
@@ -75,7 +75,7 @@ const getByUserIDandQueries = async (req, res) => {
   });
 };
 
-const operationController = {
+const operationsController = {
   getAll,
   createOperation,
   get,
@@ -84,4 +84,4 @@ const operationController = {
   getByUserIDandQueries,
 };
 
-module.exports = operationController;
+export default operationsController;

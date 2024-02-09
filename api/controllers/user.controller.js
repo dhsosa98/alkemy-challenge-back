@@ -1,8 +1,7 @@
-require("dotenv").config();
-const { userRepository } = require("../../dal/repositories");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const { OAuth2Client } = require("google-auth-library");
+import { userRepository } from "../../dal/repositories/index.js";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { OAuth2Client } from "google-auth-library";
 
 const client = new OAuth2Client(process.env.API_CLIENT_ID);
 
@@ -262,4 +261,4 @@ const userController = {
   googleAuth,
 };
 
-module.exports = userController;
+export default userController;

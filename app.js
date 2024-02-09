@@ -1,34 +1,36 @@
-require('dotenv').config(); 
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const session = require('express-session'); 
-const cors = require('cors'); 
+import dotenv from 'dotenv';
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import session from 'express-session';
+import cors from 'cors';
 
-const { userRouter, operationsRouter, filesRouter } =require('./api/routes');
+import { userRouter, operationsRouter, filesRouter } from './api/routes/index.js';
+
+dotenv.config();
 
 const App = express();
 
 const sess = {
-	name: process.env.SESSION_NAME, 
+	name: process.env.SESSION_NAME,
 	secret: process.env.SECRET_KEY,
-	resave: false, 
+	resave: false,
 	saveUninitialized: true,
 	cookie: {
 		httpOnly: true,
-		sameSite:true,
+		sameSite: true,
 		maxAge: parseInt(process.env.COOKIE_AGE),
-	}
+	},
 };
 
 App.use(cors())
-.use(logger('dev'))
-.use(express.json())
-.use(express.urlencoded({ extended: false }))
-.use(cookieParser())
-.use(session(sess))
-.use('/api/users', userRouter)
-.use('/api/operations', operationsRouter)
-.use('/api/files', filesRouter)
+	.use(logger('dev'))
+	.use(express.json())
+	.use(express.urlencoded({ extended: false }))
+	.use(cookieParser())
+	.use(session(sess))
+	.use('/api/users', userRouter)
+	.use('/api/operations', operationsRouter)
+	.use('/api/files', filesRouter);
 
-module.exports = App;
+export default App;

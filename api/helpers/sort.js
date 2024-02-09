@@ -6,4 +6,4 @@ const createSort = (sort) => {
   return { order };
 };
 
-module.exports = { createSort };
+export { createSort };

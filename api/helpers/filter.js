@@ -1,5 +1,5 @@
-const { Op } = require("sequelize");
-const Sequelize = require("sequelize");
+import { Op } from "sequelize";
+import Sequelize from "sequelize";
 
 const createFilter = (search, from, to, fields) => {
   let searchFilter = {};
@@ -25,4 +25,4 @@ const createFilter = (search, from, to, fields) => {
   };
 };
 
-module.exports = { createFilter };
+export { createFilter };

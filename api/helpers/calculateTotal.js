@@ -1,9 +1,9 @@
-const { operationRepository } = require("../../dal/repositories");
+import { operationRepository } from "../../dal/repositories/index.js";
 
 async function calculateTotal(id) {
   let total = 0;
-  const options = { where: {UserId: id}}
-  const operations = await operationRepository.getAllByFieldAndOptions(options) || []
+  const options = { where: { UserId: id } };
+  const operations = await operationRepository.getAllByFieldAndOptions(options) || [];
   operations?.rows?.forEach((operation) =>
     operation["type"] === "Income"
       ? (total += parseInt(operation["amount"]))
@@ -12,4 +12,4 @@ async function calculateTotal(id) {
   return total;
 }
 
-module.exports = { calculateTotal };
+export { calculateTotal };

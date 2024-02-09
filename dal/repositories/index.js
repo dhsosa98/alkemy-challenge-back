@@ -1,4 +1,6 @@
-module.exports = {
-	operationRepository: require('./operation.repository'), 
-	userRepository: require('./user.repository'),
+import operationRepository from './operation.repository.js';
+import userRepository from './user.repository.js';
+export {
+	operationRepository,
+	userRepository,
 };

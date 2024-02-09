@@ -1,5 +1,5 @@
-const { Op } = require("sequelize");
-const Sequelize = require("sequelize");
+import { Op } from "sequelize";
+import Sequelize from "sequelize";
 
 const createSearch = (search) => {
   let toWhere = {};
@@ -38,4 +38,4 @@ const createSearch = (search) => {
   return { toWhere };
 };
 
-module.exports = { createSearch };
+export { createSearch };
