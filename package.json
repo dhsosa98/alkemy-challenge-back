@@ -6,10 +6,15 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc",
+    "add-dist": "git add dist",
     "start": "SET NODE_ENV=production& node dist/index.js",
     "dev": "SET NODE_ENV=development& nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "pre-commit": [
+    "build",
+    "add-dist"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -40,6 +45,7 @@
     "@types/node": "^20.11.17",
     "@types/validator": "^13.11.9",
     "nodemon": "2.0.12",
+    "pre-commit": "^1.2.2",
     "typescript": "^4.5.4"
   }
 }
